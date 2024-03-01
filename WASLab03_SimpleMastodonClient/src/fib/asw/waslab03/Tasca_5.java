@@ -49,7 +49,7 @@ public class Tasca_5 {
 		String TOKENBoost = Token.get();
 
 		try {
-			String output = Request.post(URIBoost)
+			String outputF = Request.post(URIBoost)
 			.addHeader("Authorization","Bearer "+TOKENBoost)
 			.execute()
 			.returnContent()

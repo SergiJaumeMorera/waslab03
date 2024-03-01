@@ -4,4 +4,4 @@ Students:
 
 * Gibert, Miquel
 
-* Jaume, Sergi
+* Jaume, Sergi (@sergijaume12)
