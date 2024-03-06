@@ -20,7 +20,9 @@ public class Tasca_6 {
 		SimpleDateFormat sdf = new SimpleDateFormat(" yyyy-MM-dd 'a les' HH:mm:ss", new Locale(LOCALE));
 		String data = sdf.format(new Date());
 		
+		System.out.println();
 		System.out.println("Els 10 tags més populars a Mastodon [" + data + "]");
+		System.out.println();
 
 		try {
 			String outputt = Request.get(URIt).addHeader("Authorization","Bearer " + token).execute().returnContent().asString();
@@ -32,7 +34,9 @@ public class Tasca_6 {
 				JSONObject resultObj = result.getJSONObject(i);
 				String nameT = resultObj.getString("name");
 				
-				System.out.println(nameT);
+				System.out.println("*************************************************");
+				System.out.println("* Tag: " + nameT);
+				System.out.println("*************************************************");
 				
 				//get 5 statuses of the tag
 				String URIh = "https://mastodont.cat/api/v1/timelines/tag/" + nameT;
@@ -55,12 +59,13 @@ public class Tasca_6 {
 					String acct = acc.getString("acct");
 					String content = resultObj3.get("content").toString().replaceAll("\\<.*?\\>", "");
 					
-					System.out.print(displayName + " ");
-					System.out.print("(" + username + " ");
+					System.out.print("- " + displayName + " ");
+					System.out.print("(@" + username);
 					if (acct != "mastodon.cat") System.out.print("@" + acct + "): ");
 					System.out.println(content);
 					System.out.println("-------------------------------------------------");
 				}
+				if (i != 9) System.out.println();
 			}
 				
 		}
